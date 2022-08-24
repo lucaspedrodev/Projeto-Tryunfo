@@ -20,8 +20,9 @@ class Form extends Component {
     return (
       <form>
         <label htmlFor="nome">
-          nome
+          nome:
           <input
+            name="cardName"
             type="text"
             data-testid="name-input"
             value={ cardName }
@@ -33,17 +34,18 @@ class Form extends Component {
             value={ cardDescription }
             onChange={ onInputChange }
             data-testid="description-input"
-            name="descrição"
+            name="cardDescription"
             id="a"
             cols="30"
             rows="10"
           >
-            carta
+            carta:
           </textarea>
         </label>
         <label htmlFor="Atributo 1">
-          Atributo 1
+          atributo1:
           <input
+            name="cardAttr1"
             value={ cardAttr1 }
             onChange={ onInputChange }
             type="number"
@@ -51,8 +53,9 @@ class Form extends Component {
           />
         </label>
         <label htmlFor=" Atributo 2">
-          Atributo 2
+          atributo2:
           <input
+            name="cardAttr2"
             value={ cardAttr2 }
             onChange={ onInputChange }
             type="number"
@@ -60,8 +63,9 @@ class Form extends Component {
           />
         </label>
         <label htmlFor="Atributo 3">
-          Atributo 3
+          atributo3:
           <input
+            name="cardAttr3"
             value={ cardAttr3 }
             onChange={ onInputChange }
             type="number"
@@ -69,8 +73,9 @@ class Form extends Component {
           />
         </label>
         <label htmlFor="Imagem">
-          Imagem
+          imagem:
           <input
+            name="cardImage"
             value={ cardImage }
             onChange={ onInputChange }
             type="text"
@@ -78,12 +83,12 @@ class Form extends Component {
           />
         </label>
         <label htmlFor="nome">
-          nome
+          raridade
           <select
+            name="cardRare"
             value={ cardRare }
             onChange={ onInputChange }
             data-testid="rare-input"
-            name=""
             id=""
           >
             <option value="normal"> normal </option>
@@ -94,6 +99,7 @@ class Form extends Component {
         <label htmlFor="Super Trunfo">
           Super Trunfo
           <input
+            name="cardTrunfo"
             checked={ cardTrunfo }
             onChange={ onInputChange }
             type="checkbox"
@@ -106,7 +112,7 @@ class Form extends Component {
           type="button"
           data-testid="save-button"
         >
-          Salvar
+          salvar
         </button>
       </form>
     );
