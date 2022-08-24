@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import { number } from 'prop-types';
 
 class App extends React.Component {
   constructor() {
@@ -24,6 +25,24 @@ class App extends React.Component {
     const value = type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
+    }, () => {
+      const { cardName, cardDescription,
+        cardImage, cardRare, cardAttr1, cardAttr2, cardAttr3 } = this.state;
+      const noventa = 90;
+      const duzentosEDez = 210;
+      if ((cardName && cardDescription && cardImage && cardRare !== '')
+        && Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3) <= duzentosEDez
+        && Number(cardAttr1) >= 0 && Number(cardAttr1) <= noventa
+        && Number(cardAttr2) >= 0 && Number(cardAttr2) <= noventa
+        && Number(cardAttr3) >= 0 && Number(cardAttr3) <= noventa) {
+        this.setState({
+          isSaveButtonDisabled: false,
+        });
+      } else {
+        this.setState({
+          isSaveButtonDisabled: true,
+        });
+      }
     });
   };
 
