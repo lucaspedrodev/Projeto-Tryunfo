@@ -43,29 +43,14 @@ class App extends React.Component {
           isSaveButtonDisabled: true,
         });
       }
-      const { cardTrunfo } = this.state;
-      if (cardTrunfo) {
-        return this.setState({
-          hasTrunfo: true,
-          cardTrunfo: true,
-        });
-      }
-      return this.setState({
-        hasTrunfo: false,
-      });
     });
   };
 
-  onSaveButtonClick = (objeto) => {
-    if (objeto.cardTrunfo === true) {
-      console.log('teste');
-      objeto.hasTrunfo = true;
-    }
+  onSaveButtonClick = () => {
+    const { cardTrunfo, cardName, cardDescription,
+      cardAttr1, cardAttr2, cardAttr3, cardImage, cardRare } = this.state;
+    if (cardTrunfo) this.setState({ hasTrunfo: true });
     this.setState((prevState) => ({
-      data: [{ ...prevState.data, objeto }],
-    }
-    ));
-    this.setState({
       cardName: '',
       cardDescription: '',
       cardAttr1: '0',
@@ -73,8 +58,17 @@ class App extends React.Component {
       cardAttr3: '0',
       cardImage: '',
       cardRare: '',
-      cardTrunfo: false,
-    });
+      data: [...prevState.data, {
+        cardName,
+        cardDescription,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardImage,
+        cardRare,
+      }],
+    }
+    ));
   };
 
   render() {
@@ -89,7 +83,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
-
+      data,
     } = this.state;
     return (
       <div>
@@ -117,6 +111,19 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        {
+          data.map((e) => (<Card
+            key={ e.cardName }
+            cardName={ e.cardName }
+            cardDescription={ e.cardDescription }
+            cardAttr1={ e.cardAttr1 }
+            cardAttr2={ e.cardAttr2 }
+            cardAttr3={ e.cardAttr3 }
+            cardImage={ e.cardImage }
+            cardRare={ e.cardRare }
+            cardTrunfo={ e.cardTrunfo }
+          />))
+        }
       </div>
     );
   }
